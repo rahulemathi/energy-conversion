@@ -16,25 +16,26 @@ input::-webkit-inner-spin-button {
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-md-6">
+        <div class="row d-flex">
+            <div class="col-md-12 col-md-6 col-lg-6 my-4">
                 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Energy Conversion</h5>
-    <input type="number" id="watts" class="form-control" placeholder="Enter watts" onkeyup="watt()">
-    <input type="number" id="kW" class="form-control" placeholder="Enter kW" onkeyup="kilowatt()">
-    <input type="number" id="kWh" class="form-control" placeholder="Enter kWh" onkeyup="KWH()">
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <input type="number" id="watts" class="form-control my-2" placeholder="Enter watts" onkeyup="watt()">
+    <input type="number" id="kW" class="form-control my-2" placeholder="Enter kW" onkeyup="kilowatt()">
+    <input type="number" id="kWh" class="form-control my-2" placeholder="Enter kWh" onkeyup="KWH()">
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    <p>* Note the above calulations are only for per hour</p>
   </div>
 </div>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6 col-lg-6 my-4">
                 <table class="table table-primary">
                     <tr>
                         <th>Hours</th>
                         <th>watts</th>
                         <th>kW</th>
-                        <th>kWh</th>
+                        <th>kWh or Units</th>
                     </tr>
                     <tr>
                         <td>Per Hour</td>
@@ -106,9 +107,10 @@ input::-webkit-inner-spin-button {
         function watt(){
             kW.value = watts.value/1000;
             kWh.value = (watts.value*1)/1000;
+          
             phw.innerHTML = watts.value;
             pk.innerHTML = watts.value/1000;
-            pkw.innerHTML =  kW.value*1000;
+            pkw.innerHTML =  (watts.value*1)/1000;
 
             sixhw.innerHTML = watts.value*6;
             sixk.innerHTML = (watts.value*6)/1000;
@@ -125,11 +127,45 @@ input::-webkit-inner-spin-button {
         }
 
         function kilowatt(){
-             
+             watts.value = kW.value*1000;
+             kWh.value = kW.value*1;
+
+             phw.innerHTML = watts.value;
+            pk.innerHTML = watts.value/1000;
+            pkw.innerHTML =  kW.value*1000;
+
+            sixhw.innerHTML = watts.value*6;
+            sixk.innerHTML = (watts.value*6)/1000;
+            sixkw.innerHTML =  (watts.value*6)*1000;
+
+            thw.innerHTML = 12*watts.value;
+            tk.innerHTML = (watts.value*12)/1000;
+            tkw.innerHTML = (watts.value*12)*1000;
+
+            tfhw.innerHTML = 24*watts.value;
+            tfk.innerHTML = (watts.value*24)/1000;
+            tfkw.innerHTML = (watts.value*24)*1000;
         }
 
         function KWH(){
-            
+            watts.value =kWh.value*1000;
+            kW.value = kWh.value/1;
+
+            phw.innerHTML = watts.value;
+            pk.innerHTML = watts.value/1000;
+            pkw.innerHTML =  kW.value*1000;
+
+            sixhw.innerHTML = watts.value*6;
+            sixk.innerHTML = (watts.value*6)/1000;
+            sixkw.innerHTML =  (watts.value*6)*1000;
+
+            thw.innerHTML = 12*watts.value;
+            tk.innerHTML = (watts.value*12)/1000;
+            tkw.innerHTML = (watts.value*12)*1000;
+
+            tfhw.innerHTML = 24*watts.value;
+            tfk.innerHTML = (watts.value*24)/1000;
+            tfkw.innerHTML = (watts.value*24)*1000;
         }
     </script>
 </body>
